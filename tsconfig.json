@@ -19,7 +19,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "types": ["node"],
-    "baseUrl": "/",
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "@server/*": ["./server/*"]
