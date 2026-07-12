@@ -23,7 +23,7 @@ import { BookingsPage } from "@/pages/bookings/bookings";
 import { MaintenancePage } from "@/pages/maintenance/maintenance";
 import { AuditsPage } from "@/pages/audits/audits";
 import { ReportsPage } from "@/pages/reports/reports";
-import { SettingsPage } from "@/pages/settings/settings";
+import SettingsPage from "@/pages/settings/SettingsPage";
 import { NotificationsPage } from "@/pages/notifications/notifications";
 import { CopilotPage } from "@/pages/copilot/copilot";
 import { RoleDashboardPage } from "@/pages/dashboard/role-dashboard";
