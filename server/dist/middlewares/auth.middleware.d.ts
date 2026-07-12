@@ -1,9 +1,5 @@
 import { Request, Response, NextFunction } from "express";
 import { JwtPayload } from "jsonwebtoken";
-<<<<<<< HEAD
-=======
-import "../types";
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
 export interface AuthPayload extends JwtPayload {
     userId: string;
     email: string;

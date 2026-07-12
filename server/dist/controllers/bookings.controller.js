@@ -35,11 +35,7 @@ exports.bookingsController = {
         });
     }),
     getById: (0, error_middleware_1.asyncHandler)(async (req, res) => {
-<<<<<<< HEAD
         const booking = await bookings_service_1.bookingsService.getById(req.params.id, req.user.organizationId);
-=======
-        const booking = await bookings_service_1.bookingsService.getById(String(req.params.id), req.user.organizationId);
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         res.status(200).json({
             success: true,
             data: booking,
@@ -62,11 +58,7 @@ exports.bookingsController = {
         });
     }),
     update: (0, error_middleware_1.asyncHandler)(async (req, res) => {
-<<<<<<< HEAD
         const booking = await bookings_service_1.bookingsService.update(req.params.id, req.user.organizationId, req.body);
-=======
-        const booking = await bookings_service_1.bookingsService.update(String(req.params.id), req.user.organizationId, req.body);
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         try {
             (0, socket_service_1.getIO)().to(`org:${req.user.organizationId}`).emit("booking:updated", booking);
         }
@@ -80,11 +72,7 @@ exports.bookingsController = {
         });
     }),
     remove: (0, error_middleware_1.asyncHandler)(async (req, res) => {
-<<<<<<< HEAD
         const result = await bookings_service_1.bookingsService.remove(req.params.id, req.user.organizationId);
-=======
-        const result = await bookings_service_1.bookingsService.remove(String(req.params.id), req.user.organizationId);
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         try {
             (0, socket_service_1.getIO)().to(`org:${req.user.organizationId}`).emit("booking:deleted", { id: req.params.id });
         }

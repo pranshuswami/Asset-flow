@@ -7,10 +7,7 @@ import rateLimit from "express-rate-limit";
 import { env } from "./env";
 import { errorHandler } from "../middlewares/error.middleware";
 import { authRouter } from "../routes/auth.routes";
-<<<<<<< HEAD
 import { categoriesRouter } from "../routes/categories.routes";
-=======
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
 import { organizationRouter } from "../routes/organization.routes";
 import { assetsRouter } from "../routes/assets.routes";
 import { employeesRouter } from "../routes/employees.routes";
@@ -25,10 +22,7 @@ import { searchRouter } from "../routes/search.routes";
 import { settingsRouter } from "../routes/settings.routes";
 import { aiRouter } from "../routes/ai.routes";
 import { notificationsRouter } from "../routes/notifications.routes";
-<<<<<<< HEAD
 import { socketService } from "../services/socket.service";
-=======
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
 
 export function createApp(): Express {
   const app = express();
@@ -58,10 +52,7 @@ export function createApp(): Express {
   });
 
   app.use("/api/auth", authRouter);
-<<<<<<< HEAD
   app.use("/api/categories", categoriesRouter);
-=======
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
   app.use("/api/organization", organizationRouter);
   app.use("/api/assets", assetsRouter);
   app.use("/api/employees", employeesRouter);

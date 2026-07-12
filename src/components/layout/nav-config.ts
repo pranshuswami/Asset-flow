@@ -1,6 +1,4 @@
 import type { LucideIcon } from "lucide-react";
-import type { Role } from "@/types";
-import { canAccessRoute } from "@/lib/role-access";
 import {
   LayoutDashboard,
   Boxes,
@@ -58,7 +56,3 @@ export const NAV_GROUPS: { id: string; label: string; items: NavItem[] }[] = [
 ];
 
 export const ALL_NAV_ITEMS: NavItem[] = NAV_GROUPS.flatMap((g) => g.items);
-
-export function navGroupsForRole(role: Role) {
-  return NAV_GROUPS.map((group) => ({ ...group, items: group.items.filter((item) => item.to === "/" || canAccessRoute(role, item.to)) })).filter((group) => group.items.length > 0);
-}

@@ -20,11 +20,7 @@ export declare const maintenanceService: {
     getById(id: string, organizationId: string): Promise<{
         asset: {
             name: string;
-<<<<<<< HEAD
             organizationId: string | null;
-=======
-            organizationId: string;
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
             id: string;
             createdAt: Date;
             updatedAt: Date;
@@ -88,11 +84,7 @@ export declare const maintenanceService: {
     create(data: any, createdById: string): Promise<{
         asset: {
             name: string;
-<<<<<<< HEAD
             organizationId: string | null;
-=======
-            organizationId: string;
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
             id: string;
             createdAt: Date;
             updatedAt: Date;
@@ -156,11 +148,7 @@ export declare const maintenanceService: {
     updateStatus(id: string, organizationId: string, status: MaintenanceStatus): Promise<{
         asset: {
             name: string;
-<<<<<<< HEAD
             organizationId: string | null;
-=======
-            organizationId: string;
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
             id: string;
             createdAt: Date;
             updatedAt: Date;
@@ -224,11 +212,7 @@ export declare const maintenanceService: {
     assignTechnician(id: string, organizationId: string, assignedToId: string): Promise<{
         asset: {
             name: string;
-<<<<<<< HEAD
             organizationId: string | null;
-=======
-            organizationId: string;
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
             id: string;
             createdAt: Date;
             updatedAt: Date;

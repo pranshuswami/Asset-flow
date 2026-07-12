@@ -116,23 +116,11 @@ export const assetsService = {
       throw new ConflictError(`Asset code ${code} already exists`);
     }
 
-<<<<<<< HEAD
-=======
-    const createdBy = await prisma.user.findUnique({
-      where: { id: createdById },
-      select: { organizationId: true },
-    });
-
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
     const asset = await prisma.asset.create({
       data: {
         assetCode: code,
         name: data.name,
         description: data.description,
-<<<<<<< HEAD
-=======
-        organizationId: createdBy?.organizationId ?? "",
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         categoryId: data.categoryId,
         departmentId: data.departmentId,
         locationId: data.locationId,

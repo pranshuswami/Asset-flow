@@ -27,10 +27,6 @@ model User {
   createdAssets  Asset[]        @relation("AssetCreatedBy")
   notifications  Notification[]
   aiConversations AiConversation[]
-<<<<<<< HEAD
-=======
-
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
   refreshTokens RefreshToken[]
 }
 
@@ -65,11 +61,7 @@ model Department {
   name        String
   code        String   @unique
   description String?
-<<<<<<< HEAD
   headId      String?   @unique
-=======
-  headId      String?  @unique
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
   parentId    String?
   isActive    Boolean  @default(true)
   createdAt   DateTime @default(now())
@@ -102,17 +94,10 @@ model Employee {
   user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   headDept   Department? @relation("DepartmentHead")
   allocations Allocation[]
-<<<<<<< HEAD
   bookings    Booking[]
   maintenanceAssignments Maintenance[] @relation("TechnicianAssignments")
   audits     Audit[]
   ownedAssets Asset[] @relation("AssetOwner")
-=======
-  ownedAssets Asset[] @relation("AssetOwner")
-  bookings    Booking[]
-  maintenanceAssignments Maintenance[] @relation("TechnicianAssignments")
-  audits     Audit[]
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
 }
 
 model Category {
@@ -169,21 +154,13 @@ model Asset {
   createdAt      DateTime    @default(now())
   updatedAt      DateTime    @updatedAt
 
-<<<<<<< HEAD
-=======
-  organization   Organization    @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  organizationId String
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
   category       Category        @relation(fields: [categoryId], references: [id])
   department     Department      @relation(fields: [departmentId], references: [id])
   departmentId   String
   location       Location        @relation(fields: [locationId], references: [id])
   locationId     String
-<<<<<<< HEAD
   organization   Organization?   @relation(fields: [organizationId], references: [id])
   organizationId String?
-=======
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
   owner          Employee?       @relation("AssetOwner", fields: [ownerId], references: [id])
   ownerId        String?
   createdBy      User            @relation("AssetCreatedBy", fields: [createdById], references: [id])

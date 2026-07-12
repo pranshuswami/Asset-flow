@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -36,22 +35,16 @@ import { relativeTime } from "@/lib/format";
 import { TimelineDot } from "@/components/common/asset-timeline";
 import { ACTIVITY_META, ASSET_CATEGORY_META } from "@/constants";
 import type { Insight } from "@/types";
-=======
-import { AIInsightCard } from "@/components/dashboard/ai-insight-card";
-import { AssetCard, type DashboardAsset } from "@/components/dashboard/asset-card";
-import { BottomNavigation } from "@/components/dashboard/bottom-navigation";
-import { Navbar } from "@/components/dashboard/navbar";
-import { RecentActivity } from "@/components/dashboard/recent-activity";
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
 
-const assets: DashboardAsset[] = [
-  { id: "AF-20394", name: "Robot Assembly Arm", category: "Manufacturing · Line 02", image: "https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=1200&q=85", status: "Optimal" },
-  { id: "AF-99321", name: "Deep Learning Node", category: "Compute infrastructure · Rack 04B", image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=85", status: "Check up" },
-  { id: "AF-88721", name: "EV Transit 04", category: "Fleet operations · North depot", image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=85", status: "Active" },
-];
+const C = {
+  primary: "hsl(var(--primary))",
+  success: "hsl(var(--success))",
+  warning: "hsl(var(--warning))",
+  destructive: "hsl(var(--destructive))",
+  accent: "hsl(var(--accent-foreground))",
+};
 
 export function DashboardPage() {
-<<<<<<< HEAD
   const { data: metrics, isLoading } = useDashboardMetrics();
   const { data: activity } = useActivity();
   const { data: insights } = useInsights();
@@ -185,25 +178,66 @@ export function DashboardPage() {
               ))}
             </div>
           </ChartCard>
-=======
-  return (
-    <div className="min-h-screen bg-background pb-24 text-foreground transition-colors">
-      <Navbar />
-      <main className="mx-auto max-w-[1900px] px-3 py-5 sm:px-6 md:py-7">
-        <div className="grid gap-5 xl:grid-cols-[minmax(420px,0.65fr)_minmax(600px,1.35fr)]">
-          <AIInsightCard />
-          <RecentActivity />
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         </div>
 
-        <section className="mt-10">
-          <h2 className="text-3xl font-semibold tracking-tight">High-Value Assets</h2>
-          <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {assets.map((asset) => <AssetCard key={asset.id} asset={asset} />)}
-          </div>
-        </section>
-      </main>
-      <BottomNavigation />
+        <div>
+          <ChartCard title="AI Insights" subtitle="Generated today" className="h-full">
+            <div className="space-y-2.5">
+              {insights?.map((insight) => (
+                <InsightCard key={insight.id} insight={insight} />
+              ))}
+            </div>
+          </ChartCard>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function InsightCard({ insight }: { insight: Insight }) {
+  const tone =
+    insight.severity === "critical"
+      ? "border-destructive/30 bg-destructive/5"
+      : insight.severity === "warning"
+      ? "border-warning/30 bg-warning/5"
+      : insight.severity === "positive"
+      ? "border-success/30 bg-success/5"
+      : "border-primary/30 bg-primary/5";
+
+  const Icon = insight.severity === "positive" ? TrendingUp : insight.severity === "critical" ? AlertTriangle : Lightbulb;
+
+  return (
+    <div className={cn("rounded-xl border p-3", tone)}>
+      <div className="flex items-start gap-2">
+        <Icon className="mt-0.5 size-4 shrink-0 text-foreground" />
+        <div className="min-w-0">
+          <p className="text-sm font-medium leading-snug">{insight.title}</p>
+          <p className="mt-0.5 text-xs text-muted-foreground">{insight.description}</p>
+        </div>
+      </div>
+      {insight.metric && (
+        <div className="mt-2 flex items-center gap-2">
+          <Badge variant="outline" className="text-[10px]">
+            {insight.metric}
+          </Badge>
+          {insight.delta !== undefined && (
+            <span
+              className={cn(
+                "inline-flex items-center gap-0.5 text-xs font-semibold",
+                insight.delta >= 0 ? "text-success" : "text-destructive"
+              )}
+            >
+              <ArrowUpRight className="size-3" />
+              {Math.abs(insight.delta)}%
+            </span>
+          )}
+        </div>
+      )}
+      {insight.recommendation && (
+        <p className="mt-2 rounded-lg bg-background/60 px-2.5 py-1.5 text-[11px] text-muted-foreground">
+          💡 {insight.recommendation}
+        </p>
+      )}
     </div>
   );
 }

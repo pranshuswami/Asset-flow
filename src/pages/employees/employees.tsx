@@ -11,7 +11,6 @@ import { UserAvatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { useEmployees } from "@/hooks/queries";
 import { lookup } from "@/hooks/use-lookups";
-import { useLookups } from "@/hooks/use-lookups";
 import { ROLES } from "@/constants";
 import { useCommand } from "@/context/command-context";
 import { useLookups } from "@/hooks/use-lookups";

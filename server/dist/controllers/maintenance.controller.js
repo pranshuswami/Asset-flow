@@ -23,11 +23,7 @@ exports.maintenanceController = {
         });
     }),
     getById: (0, error_middleware_1.asyncHandler)(async (req, res) => {
-<<<<<<< HEAD
         const record = await maintenance_service_1.maintenanceService.getById(req.params.id, req.user.organizationId);
-=======
-        const record = await maintenance_service_1.maintenanceService.getById(String(req.params.id), req.user.organizationId);
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         res.status(200).json({
             success: true,
             data: record,
@@ -43,11 +39,7 @@ exports.maintenanceController = {
         });
     }),
     updateStatus: (0, error_middleware_1.asyncHandler)(async (req, res) => {
-<<<<<<< HEAD
         const record = await maintenance_service_1.maintenanceService.updateStatus(req.params.id, req.user.organizationId, req.body.status);
-=======
-        const record = await maintenance_service_1.maintenanceService.updateStatus(String(req.params.id), req.user.organizationId, req.body.status);
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         res.status(200).json({
             success: true,
             data: record,
@@ -55,11 +47,7 @@ exports.maintenanceController = {
         });
     }),
     assignTechnician: (0, error_middleware_1.asyncHandler)(async (req, res) => {
-<<<<<<< HEAD
         const record = await maintenance_service_1.maintenanceService.assignTechnician(req.params.id, req.user.organizationId, req.body.assignedToId);
-=======
-        const record = await maintenance_service_1.maintenanceService.assignTechnician(String(req.params.id), req.user.organizationId, req.body.assignedToId);
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         res.status(200).json({
             success: true,
             data: record,

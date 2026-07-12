@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 {"version":3,"file":"socket.service.d.ts","sourceRoot":"","sources":["../../src/services/socket.service.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,MAAM,WAAW,CAAC;AAKnC,wBAAgB,UAAU,CAAC,MAAM,EAAE,GAAG,iIAgBrC;AAED,wBAAgB,KAAK,kIAGpB;AAED,wBAAgB,KAAK,SAKpB;AAED,eAAO,MAAM,aAAa;;;;CAIzB,CAAC"}
-=======
-{"version":3,"file":"socket.service.d.ts","sourceRoot":"","sources":["../../src/services/socket.service.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,MAAM,WAAW,CAAC;AAKnC,wBAAgB,UAAU,CAAC,MAAM,EAAE,GAAG,iIAgBrC;AAED,wBAAgB,KAAK,kIAGpB;AAED,wBAAgB,KAAK,SAKpB"}
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec

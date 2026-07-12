@@ -13,11 +13,7 @@
     "db:studio": "prisma studio"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@prisma/client": "^6.4.1",
-=======
-    "@prisma/client": "^6.19.3",
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
     "bcryptjs": "^2.4.3",
     "cloudinary": "^2.5.1",
     "cookie-parser": "^1.4.7",

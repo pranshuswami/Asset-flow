@@ -30,11 +30,7 @@ export const maintenanceController = {
   }),
 
   getById: asyncHandler(async (req: Request, res: Response) => {
-<<<<<<< HEAD
     const record = await maintenanceService.getById(req.params.id as string, req.user!.organizationId!);
-=======
-    const record = await maintenanceService.getById(String(req.params.id), req.user!.organizationId!);
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
     res.status(200).json({
       success: true,
       data: record,
@@ -53,11 +49,7 @@ export const maintenanceController = {
 
   updateStatus: asyncHandler(async (req: Request, res: Response) => {
     const record = await maintenanceService.updateStatus(
-<<<<<<< HEAD
       req.params.id as string,
-=======
-      String(req.params.id),
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
       req.user!.organizationId!,
       req.body.status
     );
@@ -70,11 +62,7 @@ export const maintenanceController = {
 
   assignTechnician: asyncHandler(async (req: Request, res: Response) => {
     const record = await maintenanceService.assignTechnician(
-<<<<<<< HEAD
       req.params.id as string,
-=======
-      String(req.params.id),
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
       req.user!.organizationId!,
       req.body.assignedToId
     );

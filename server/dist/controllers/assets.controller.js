@@ -47,11 +47,7 @@ exports.assetsController = {
         });
     }),
     getById: (0, error_middleware_1.asyncHandler)(async (req, res) => {
-<<<<<<< HEAD
         const asset = await assets_service_1.assetsService.getAssetById(req.params.id);
-=======
-        const asset = await assets_service_1.assetsService.getAssetById(String(req.params.id));
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         res.status(200).json({
             success: true,
             data: asset,
@@ -59,11 +55,7 @@ exports.assetsController = {
         });
     }),
     update: (0, error_middleware_1.asyncHandler)(async (req, res) => {
-<<<<<<< HEAD
         const asset = await assets_service_1.assetsService.updateAsset(req.params.id, req.body);
-=======
-        const asset = await assets_service_1.assetsService.updateAsset(String(req.params.id), req.body);
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         res.status(200).json({
             success: true,
             data: asset,
@@ -71,11 +63,7 @@ exports.assetsController = {
         });
     }),
     remove: (0, error_middleware_1.asyncHandler)(async (req, res) => {
-<<<<<<< HEAD
         const result = await assets_service_1.assetsService.deleteAsset(req.params.id);
-=======
-        const result = await assets_service_1.assetsService.deleteAsset(String(req.params.id));
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         res.status(200).json({
             success: true,
             data: result,
@@ -83,11 +71,7 @@ exports.assetsController = {
         });
     }),
     generateQR: (0, error_middleware_1.asyncHandler)(async (req, res) => {
-<<<<<<< HEAD
         const asset = await assets_service_1.assetsService.generateQRCode(req.params.id);
-=======
-        const asset = await assets_service_1.assetsService.generateQRCode(String(req.params.id));
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         res.status(200).json({
             success: true,
             data: { qrCodeUrl: asset.qrCodeUrl },
@@ -95,11 +79,7 @@ exports.assetsController = {
         });
     }),
     timeline: (0, error_middleware_1.asyncHandler)(async (req, res) => {
-<<<<<<< HEAD
         const events = await assets_service_1.assetsService.getTimeline(req.params.id);
-=======
-        const events = await assets_service_1.assetsService.getTimeline(String(req.params.id));
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         res.status(200).json({
             success: true,
             data: events,
@@ -108,11 +88,7 @@ exports.assetsController = {
     }),
     addTimelineEvent: (0, error_middleware_1.asyncHandler)(async (req, res) => {
         const user = getAuthUser(req);
-<<<<<<< HEAD
         const event = await assets_service_1.assetsService.addTimelineEvent(req.params.id, req.body, user.id);
-=======
-        const event = await assets_service_1.assetsService.addTimelineEvent(String(req.params.id), req.body, user.id);
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         res.status(201).json({
             success: true,
             data: event,
@@ -124,11 +100,7 @@ exports.assetsController = {
             res.status(400).json({ success: false, message: "No photo file provided" });
             return;
         }
-<<<<<<< HEAD
         const asset = await assets_service_1.assetsService.uploadPhoto(req.params.id, req.file);
-=======
-        const asset = await assets_service_1.assetsService.uploadPhoto(String(req.params.id), req.file);
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         res.status(200).json({
             success: true,
             data: { photoUrl: asset.photoUrl },

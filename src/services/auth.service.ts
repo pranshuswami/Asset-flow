@@ -8,33 +8,26 @@ export interface Session {
   token: string;
   refreshToken: string;
   user: User;
-  expiresAt: number;
 }
 
 function makeToken(user: User): string {
   return `mock.${btoa(JSON.stringify({ sub: user.id, role: user.role, iat: Date.now() }))}.jwt`;
 }
 
-const SESSION_DURATION_MS = 8 * 60 * 60 * 1000;
-
-function createSession(user: User): Session {
-  return { token: makeToken(user), refreshToken: makeToken(user), user, expiresAt: Date.now() + SESSION_DURATION_MS };
-}
-
-function persist(session: Session): Session {
-  // Session storage limits exposure to the active browser session in this frontend-only demo.
-  sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
-  return session;
-}
-
 export const authService = {
   async login(email: string, password: string): Promise<Session> {
     return request(() => {
       const user = db.users.find((u) => u.email.toLowerCase() === email.toLowerCase());
-      if (!user || user.status !== "ACTIVE" || password !== "password123") {
+      if (!user || password.length < 8) {
         throw new ApiError(401, "Invalid email or password");
       }
-      return persist(createSession(user));
+      const session: Session = {
+        token: makeToken(user),
+        refreshToken: makeToken(user),
+        user,
+      };
+      localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+      return session;
     });
   },
 
@@ -54,7 +47,9 @@ export const authService = {
         lastActive: new Date().toISOString(),
       };
       db.users.unshift(user);
-      return persist(createSession(user));
+      const session: Session = { token: makeToken(user), refreshToken: makeToken(user), user };
+      localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+      return session;
     });
   },
 
@@ -68,39 +63,14 @@ export const authService = {
 
   getSession(): Session | null {
     try {
-      const raw = sessionStorage.getItem(SESSION_KEY);
-      const session = raw ? (JSON.parse(raw) as Session) : null;
-      if (!session || session.expiresAt <= Date.now()) {
-        sessionStorage.removeItem(SESSION_KEY);
-        return null;
-      }
-      return session;
+      const raw = localStorage.getItem(SESSION_KEY);
+      return raw ? (JSON.parse(raw) as Session) : null;
     } catch {
       return null;
     }
   },
 
   logout(): void {
-    sessionStorage.removeItem(SESSION_KEY);
-  },
-
-  async loginWithQr(payload: string): Promise<Session> {
-    return request(() => {
-      let code: URL;
-      try {
-        code = new URL(payload.trim());
-      } catch {
-        throw new ApiError(400, "This QR code is not a valid AssetFlow login code");
-      }
-      const expires = Number(code.searchParams.get("expires"));
-      const userId = code.searchParams.get("user");
-      if (code.protocol !== "assetflow:" || code.hostname !== "login" || !userId || !Number.isFinite(expires)) {
-        throw new ApiError(400, "This QR code is not a valid AssetFlow login code");
-      }
-      if (expires <= Date.now()) throw new ApiError(401, "This QR login code has expired. Generate a new code and try again.");
-      const user = db.users.find((candidate) => candidate.id === userId);
-      if (!user || user.status !== "ACTIVE") throw new ApiError(401, "This QR code is no longer authorized");
-      return persist(createSession(user));
-    });
+    localStorage.removeItem(SESSION_KEY);
   },
 };

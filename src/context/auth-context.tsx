@@ -7,8 +7,7 @@ interface AuthContextValue {
   session: Session | null;
   isAuthenticated: boolean;
   loading: boolean;
-  login: (email: string, password: string) => Promise<User>;
-  loginWithQr: (payload: string) => Promise<User>;
+  login: (email: string, password: string) => Promise<void>;
   signup: (input: { name: string; email: string; organization: string }) => Promise<void>;
   logout: () => void;
 }
@@ -19,7 +18,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(() => authService.getSession());
   const [loading, setLoading] = useState(false);
 
-  // Re-check persisted session when browser storage changes.
+  // Keep localStorage + state in sync on storage changes (multi-tab).
   useEffect(() => {
     const onStorage = () => setSession(authService.getSession());
     window.addEventListener("storage", onStorage);
@@ -31,33 +30,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       const s = await authService.login(email, password);
       setSession(s);
-      return s.user;
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!session) return;
-    const remaining = session.expiresAt - Date.now();
-    if (remaining <= 0) {
-      authService.logout();
-      setSession(null);
-      return;
-    }
-    const timer = window.setTimeout(() => {
-      authService.logout();
-      setSession(null);
-    }, remaining);
-    return () => window.clearTimeout(timer);
-  }, [session]);
-
-  const loginWithQr = useCallback(async (payload: string) => {
-    setLoading(true);
-    try {
-      const s = await authService.loginWithQr(payload);
-      setSession(s);
-      return s.user;
     } finally {
       setLoading(false);
     }
@@ -85,11 +57,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       isAuthenticated: !!session,
       loading,
       login,
-      loginWithQr,
       signup,
       logout,
     }),
-    [session, loading, login, loginWithQr, signup, logout]
+    [session, loading, login, signup, logout]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

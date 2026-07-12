@@ -23,11 +23,7 @@ export declare const assetsService: {
     listAssets(filters: AssetListFilters, page?: number, limit?: number): Promise<AssetListResult>;
     createAsset(data: any, createdById: string): Promise<{
         name: string;
-<<<<<<< HEAD
         organizationId: string | null;
-=======
-        organizationId: string;
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         id: string;
         createdAt: Date;
         updatedAt: Date;
@@ -109,11 +105,7 @@ export declare const assetsService: {
         };
     } & {
         name: string;
-<<<<<<< HEAD
         organizationId: string | null;
-=======
-        organizationId: string;
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         id: string;
         createdAt: Date;
         updatedAt: Date;
@@ -142,11 +134,7 @@ export declare const assetsService: {
     }>;
     updateAsset(id: string, data: any): Promise<{
         name: string;
-<<<<<<< HEAD
         organizationId: string | null;
-=======
-        organizationId: string;
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         id: string;
         createdAt: Date;
         updatedAt: Date;
@@ -178,11 +166,7 @@ export declare const assetsService: {
     }>;
     generateQRCode(id: string): Promise<{
         name: string;
-<<<<<<< HEAD
         organizationId: string | null;
-=======
-        organizationId: string;
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         id: string;
         createdAt: Date;
         updatedAt: Date;
@@ -231,11 +215,7 @@ export declare const assetsService: {
     }>;
     uploadPhoto(id: string, file: Express.Multer.File): Promise<{
         name: string;
-<<<<<<< HEAD
         organizationId: string | null;
-=======
-        organizationId: string;
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         id: string;
         createdAt: Date;
         updatedAt: Date;

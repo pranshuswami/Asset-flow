@@ -19,12 +19,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "types": ["node"],
-<<<<<<< HEAD
     "baseUrl": "/",
-=======
-    "baseUrl": ".",
-    "ignoreDeprecations": "5.0",
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
     "paths": {
       "@/*": ["./src/*"],
       "@server/*": ["./server/*"]

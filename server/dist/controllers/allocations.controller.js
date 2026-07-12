@@ -25,11 +25,7 @@ exports.allocationsController = {
     }),
     approve: (0, error_middleware_1.asyncHandler)(async (req, res) => {
         const user = getAuthUser(req);
-<<<<<<< HEAD
         const allocation = await allocations_service_1.allocationsService.approveAllocation(req.params.id, user.id, req.body?.notes);
-=======
-        const allocation = await allocations_service_1.allocationsService.approveAllocation(String(req.params.id), user.id, req.body?.notes);
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         res.status(200).json({
             success: true,
             data: allocation,
@@ -38,11 +34,7 @@ exports.allocationsController = {
     }),
     reject: (0, error_middleware_1.asyncHandler)(async (req, res) => {
         const user = getAuthUser(req);
-<<<<<<< HEAD
         const allocation = await allocations_service_1.allocationsService.rejectAllocation(req.params.id, user.id, req.body?.notes);
-=======
-        const allocation = await allocations_service_1.allocationsService.rejectAllocation(String(req.params.id), user.id, req.body?.notes);
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         res.status(200).json({
             success: true,
             data: allocation,
@@ -51,11 +43,7 @@ exports.allocationsController = {
     }),
     return: (0, error_middleware_1.asyncHandler)(async (req, res) => {
         const user = getAuthUser(req);
-<<<<<<< HEAD
         const allocation = await allocations_service_1.allocationsService.returnAsset(req.params.id, user.id, req.body?.notes);
-=======
-        const allocation = await allocations_service_1.allocationsService.returnAsset(String(req.params.id), user.id, req.body?.notes);
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         res.status(200).json({
             success: true,
             data: allocation,
@@ -82,11 +70,7 @@ exports.allocationsController = {
         });
     }),
     getById: (0, error_middleware_1.asyncHandler)(async (req, res) => {
-<<<<<<< HEAD
         const result = await allocations_service_1.allocationsService.listAllocations({ assetId: req.params.id, limit: 1 });
-=======
-        const result = await allocations_service_1.allocationsService.listAllocations({ assetId: String(req.params.id), limit: 1 });
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         const allocation = result.data[0];
         if (!allocation) {
             res.status(404).json({ success: false, message: "Allocation not found" });

@@ -87,13 +87,8 @@ export async function login(email: string, password: string) {
     organizationId: user.organizationId ?? undefined,
   };
 
-<<<<<<< HEAD
   const accessToken = sign(payload, env.jwtSecret as any, { expiresIn: env.jwtExpiry as any });
   const refreshToken = sign(payload, env.jwtRefreshSecret as any, { expiresIn: env.jwtRefreshExpiry as any });
-=======
-  const accessToken = sign(payload as object, env.jwtSecret as string, { expiresIn: env.jwtExpiry as any });
-  const refreshToken = sign(payload as object, env.jwtRefreshSecret as string, { expiresIn: env.jwtRefreshExpiry as any });
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
 
   await prisma.refreshToken.create({
     data: {
@@ -135,11 +130,7 @@ export async function refreshAccessToken(refreshToken: string) {
     organizationId: stored.user.organizationId ?? undefined,
   };
 
-<<<<<<< HEAD
   const accessToken = sign(payload, env.jwtSecret as any, { expiresIn: env.jwtExpiry as any });
-=======
-  const accessToken = sign(payload as object, env.jwtSecret as string, { expiresIn: env.jwtExpiry as any });
->>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
 
   return {
     accessToken,

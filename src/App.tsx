@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "@/lib/query-client";
 import { ThemeProvider } from "@/context/theme-context";
@@ -6,12 +6,12 @@ import { AuthProvider } from "@/context/auth-context";
 import { NotificationsProvider } from "@/context/notifications-context";
 import { CommandProvider } from "@/context/command-context";
 import { ErrorBoundary } from "@/components/error-boundary";
-import { ProtectedRoute, PublicOnly, RoleRoute } from "@/components/route-guard";
+import { ProtectedRoute, PublicOnly } from "@/components/route-guard";
 import { AppShell } from "@/components/layout/app-shell";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 import { LoginPage } from "@/pages/auth/login";
-import { SignupPage } from "@/pages/auth/Signup";
+import { SignupPage } from "@/pages/auth/signup";
 import { ForgotPasswordPage } from "@/pages/auth/forgot-password";
 import { DashboardPage } from "@/pages/dashboard/dashboard";
 import { AssetsPage } from "@/pages/assets/assets";
@@ -24,17 +24,9 @@ import { BookingsPage } from "@/pages/bookings/bookings";
 import { MaintenancePage } from "@/pages/maintenance/maintenance";
 import { AuditsPage } from "@/pages/audits/audits";
 import { ReportsPage } from "@/pages/reports/reports";
-import SettingsPage from "@/pages/settings/SettingsPage";
+import { SettingsPage } from "@/pages/settings/settings";
 import { NotificationsPage } from "@/pages/notifications/notifications";
 import { CopilotPage } from "@/pages/copilot/copilot";
-import { RoleDashboardPage } from "@/pages/dashboard/role-dashboard";
-import { useAuth } from "@/context/auth-context";
-import { ROLE_DASHBOARD } from "@/lib/role-access";
-
-function RoleDashboardRedirect() {
-  const { user } = useAuth();
-  return user ? <Navigate to={ROLE_DASHBOARD[user.role]} replace /> : <Navigate to="/login" replace />;
-}
 
 export default function App() {
   return (
@@ -81,24 +73,20 @@ export default function App() {
                         </ProtectedRoute>
                       }
                     >
-                      <Route path="/" element={<RoleDashboardRedirect />} />
-                      <Route path="/admin" element={<RoleRoute roles={["ADMIN"]}><DashboardPage /></RoleRoute>} />
-                      <Route path="/asset-manager" element={<RoleRoute roles={["ASSET_MANAGER"]}><RoleDashboardPage role="ASSET_MANAGER" /></RoleRoute>} />
-                      <Route path="/department-head" element={<RoleRoute roles={["DEPARTMENT_HEAD"]}><RoleDashboardPage role="DEPARTMENT_HEAD" /></RoleRoute>} />
-                      <Route path="/employee" element={<RoleRoute roles={["EMPLOYEE"]}><RoleDashboardPage role="EMPLOYEE" /></RoleRoute>} />
-                      <Route path="/copilot" element={<RoleRoute roles={["ADMIN", "ASSET_MANAGER", "DEPARTMENT_HEAD"]}><CopilotPage /></RoleRoute>} />
-                      <Route path="/assets" element={<RoleRoute roles={["ADMIN", "ASSET_MANAGER", "DEPARTMENT_HEAD", "EMPLOYEE"]}><AssetsPage /></RoleRoute>} />
-                      <Route path="/assets/new" element={<RoleRoute roles={["ADMIN", "ASSET_MANAGER"]}><NewAssetPage /></RoleRoute>} />
-                      <Route path="/employees" element={<RoleRoute roles={["ADMIN", "ASSET_MANAGER", "DEPARTMENT_HEAD"]}><EmployeesPage /></RoleRoute>} />
-                      <Route path="/departments" element={<RoleRoute roles={["ADMIN", "DEPARTMENT_HEAD"]}><DepartmentsPage /></RoleRoute>} />
-                      <Route path="/locations" element={<RoleRoute roles={["ADMIN", "ASSET_MANAGER"]}><LocationsPage /></RoleRoute>} />
-                      <Route path="/allocations" element={<RoleRoute roles={["ADMIN", "ASSET_MANAGER", "DEPARTMENT_HEAD"]}><AllocationsPage /></RoleRoute>} />
-                      <Route path="/bookings" element={<RoleRoute roles={["ADMIN", "ASSET_MANAGER", "DEPARTMENT_HEAD", "EMPLOYEE"]}><BookingsPage /></RoleRoute>} />
-                      <Route path="/maintenance" element={<RoleRoute roles={["ADMIN", "ASSET_MANAGER"]}><MaintenancePage /></RoleRoute>} />
-                      <Route path="/audits" element={<RoleRoute roles={["ADMIN", "ASSET_MANAGER"]}><AuditsPage /></RoleRoute>} />
-                      <Route path="/reports" element={<RoleRoute roles={["ADMIN", "ASSET_MANAGER", "DEPARTMENT_HEAD"]}><ReportsPage /></RoleRoute>} />
-                      <Route path="/settings" element={<RoleRoute roles={["ADMIN"]}><SettingsPage /></RoleRoute>} />
-                      <Route path="/notifications" element={<RoleRoute roles={["ADMIN", "ASSET_MANAGER", "DEPARTMENT_HEAD", "EMPLOYEE"]}><NotificationsPage /></RoleRoute>} />
+                      <Route path="/" element={<DashboardPage />} />
+                      <Route path="/copilot" element={<CopilotPage />} />
+                      <Route path="/assets" element={<AssetsPage />} />
+                      <Route path="/assets/new" element={<NewAssetPage />} />
+                      <Route path="/employees" element={<EmployeesPage />} />
+                      <Route path="/departments" element={<DepartmentsPage />} />
+                      <Route path="/locations" element={<LocationsPage />} />
+                      <Route path="/allocations" element={<AllocationsPage />} />
+                      <Route path="/bookings" element={<BookingsPage />} />
+                      <Route path="/maintenance" element={<MaintenancePage />} />
+                      <Route path="/audits" element={<AuditsPage />} />
+                      <Route path="/reports" element={<ReportsPage />} />
+                      <Route path="/settings" element={<SettingsPage />} />
+                      <Route path="/notifications" element={<NotificationsPage />} />
                     </Route>
 
                     <Route path="*" element={<div className="p-10 text-center text-sm text-muted-foreground">Page not found.</div>} />
