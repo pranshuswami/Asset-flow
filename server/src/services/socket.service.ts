@@ -32,9 +32,12 @@ export function close() {
     io = null;
   }
 }
+<<<<<<< HEAD
 
 export const socketService = {
   initialize,
   getIO,
   close,
 };
+=======
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec

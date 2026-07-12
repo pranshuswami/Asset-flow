@@ -30,7 +30,11 @@ export const allocationsController = {
   approve: asyncHandler(async (req: Request, res: Response) => {
     const user = getAuthUser(req);
     const allocation = await allocationsService.approveAllocation(
+<<<<<<< HEAD
       req.params.id as string,
+=======
+      String(req.params.id),
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
       user.id,
       req.body?.notes
     );
@@ -45,7 +49,11 @@ export const allocationsController = {
   reject: asyncHandler(async (req: Request, res: Response) => {
     const user = getAuthUser(req);
     const allocation = await allocationsService.rejectAllocation(
+<<<<<<< HEAD
       req.params.id as string,
+=======
+      String(req.params.id),
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
       user.id,
       req.body?.notes
     );
@@ -60,7 +68,11 @@ export const allocationsController = {
   return: asyncHandler(async (req: Request, res: Response) => {
     const user = getAuthUser(req);
     const allocation = await allocationsService.returnAsset(
+<<<<<<< HEAD
       req.params.id as string,
+=======
+      String(req.params.id),
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
       user.id,
       req.body?.notes
     );
@@ -95,7 +107,11 @@ export const allocationsController = {
   }),
 
   getById: asyncHandler(async (req: Request, res: Response) => {
+<<<<<<< HEAD
     const result = await allocationsService.listAllocations({ assetId: req.params.id as string, limit: 1 });
+=======
+    const result = await allocationsService.listAllocations({ assetId: String(req.params.id), limit: 1 });
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
     const allocation = result.data[0];
     if (!allocation) {
       res.status(404).json({ success: false, message: "Allocation not found" });

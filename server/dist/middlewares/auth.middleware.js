@@ -7,6 +7,10 @@ exports.authMiddleware = authMiddleware;
 exports.requireRole = requireRole;
 exports.requireOrg = requireOrg;
 const jsonwebtoken_1 = require("jsonwebtoken");
+<<<<<<< HEAD
+=======
+require("../types");
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
 const env_1 = require("../config/env");
 const db_1 = require("../config/db");
 const errors_1 = require("../utils/errors");

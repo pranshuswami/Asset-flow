@@ -7,11 +7,19 @@ const app = (0, app_1.createApp)();
 const server = app.listen(env_1.env.port, () => {
     console.log(`[server] AssetFlow AI backend running on port ${env_1.env.port} (${env_1.env.nodeEnv})`);
 });
+<<<<<<< HEAD
 socket_service_1.socketService.initialize(server);
 process.on("SIGINT", async () => {
     console.log("[server] Shutting down gracefully...");
     server.close(async () => {
         await socket_service_1.socketService.close();
+=======
+(0, socket_service_1.initialize)(server);
+process.on("SIGINT", async () => {
+    console.log("[server] Shutting down gracefully...");
+    server.close(async () => {
+        await (0, socket_service_1.close)();
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
         process.exit(0);
     });
 });

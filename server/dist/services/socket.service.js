@@ -1,6 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+<<<<<<< HEAD
 exports.socketService = void 0;
+=======
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
 exports.initialize = initialize;
 exports.getIO = getIO;
 exports.close = close;
@@ -33,9 +36,12 @@ function close() {
         io = null;
     }
 }
+<<<<<<< HEAD
 exports.socketService = {
     initialize,
     getIO,
     close,
 };
+=======
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
 //# sourceMappingURL=socket.service.js.map

@@ -42,7 +42,11 @@ export const bookingsController = {
   }),
 
   getById: asyncHandler(async (req: Request, res: Response) => {
+<<<<<<< HEAD
     const booking = await bookingsService.getById(req.params.id as string, req.user!.organizationId!);
+=======
+    const booking = await bookingsService.getById(String(req.params.id), req.user!.organizationId!);
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
     res.status(200).json({
       success: true,
       data: booking,
@@ -69,7 +73,11 @@ export const bookingsController = {
 
   update: asyncHandler(async (req: Request, res: Response) => {
     const booking = await bookingsService.update(
+<<<<<<< HEAD
       req.params.id as string,
+=======
+      String(req.params.id),
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
       req.user!.organizationId!,
       req.body
     );
@@ -88,7 +96,11 @@ export const bookingsController = {
   }),
 
   remove: asyncHandler(async (req: Request, res: Response) => {
+<<<<<<< HEAD
     const result = await bookingsService.remove(req.params.id as string, req.user!.organizationId!);
+=======
+    const result = await bookingsService.remove(String(req.params.id), req.user!.organizationId!);
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
 
     try {
       getIO().to(`org:${req.user!.organizationId}`).emit("booking:deleted", { id: req.params.id });

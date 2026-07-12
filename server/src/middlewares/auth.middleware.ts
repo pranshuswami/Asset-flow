@@ -1,5 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 import { JwtPayload, sign, verify } from "jsonwebtoken";
+<<<<<<< HEAD
+=======
+import "../types";
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
 import { env } from "../config/env";
 import { prisma } from "../config/db";
 import { UnauthorizedError, ForbiddenError } from "../utils/errors";
@@ -12,8 +16,13 @@ export interface AuthPayload extends JwtPayload {
 }
 
 export function generateTokens(payload: Omit<AuthPayload, "iat" | "exp">) {
+<<<<<<< HEAD
   const accessToken = sign(payload, env.jwtSecret as any, { expiresIn: env.jwtExpiry as any });
   const refreshToken = sign(payload, env.jwtRefreshSecret as any, { expiresIn: env.jwtRefreshExpiry as any });
+=======
+  const accessToken = sign(payload as object, env.jwtSecret as string, { expiresIn: env.jwtExpiry as any });
+  const refreshToken = sign(payload as object, env.jwtRefreshSecret as string, { expiresIn: env.jwtRefreshExpiry as any });
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
   return { accessToken, refreshToken };
 }
 

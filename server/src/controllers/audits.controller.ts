@@ -29,7 +29,11 @@ export const auditsController = {
   }),
 
   getById: asyncHandler(async (req: Request, res: Response) => {
+<<<<<<< HEAD
     const audit = await auditsService.getById(req.params.id as string, req.user!.organizationId!);
+=======
+    const audit = await auditsService.getById(String(req.params.id), req.user!.organizationId!);
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
     res.status(200).json({
       success: true,
       data: audit,
@@ -48,7 +52,11 @@ export const auditsController = {
 
   addItems: asyncHandler(async (req: Request, res: Response) => {
     const audit = await auditsService.addItems(
+<<<<<<< HEAD
       req.params.id as string,
+=======
+      String(req.params.id),
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
       req.user!.organizationId!,
       req.body.items
     );
@@ -61,8 +69,13 @@ export const auditsController = {
 
   verifyItem: asyncHandler(async (req: Request, res: Response) => {
     const item = await auditsService.verifyItem(
+<<<<<<< HEAD
       req.params.id as string,
       req.params.itemId as string,
+=======
+      String(req.params.id),
+      String(req.params.itemId),
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
       req.user!.organizationId!,
       req.body
     );
@@ -74,7 +87,11 @@ export const auditsController = {
   }),
 
   closeAudit: asyncHandler(async (req: Request, res: Response) => {
+<<<<<<< HEAD
     const audit = await auditsService.closeAudit(req.params.id as string, req.user!.organizationId!);
+=======
+    const audit = await auditsService.closeAudit(String(req.params.id), req.user!.organizationId!);
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
     res.status(200).json({
       success: true,
       data: audit,

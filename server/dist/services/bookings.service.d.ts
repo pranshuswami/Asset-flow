@@ -51,7 +51,11 @@ export declare const bookingsService: {
         };
         asset: {
             name: string;
+<<<<<<< HEAD
             organizationId: string | null;
+=======
+            organizationId: string;
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
             id: string;
             createdAt: Date;
             updatedAt: Date;

@@ -2,12 +2,20 @@ import "express";
 
 declare global {
   namespace Express {
+<<<<<<< HEAD
+=======
+    interface Request {
+      user?: AuthUser;
+    }
+
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
     interface User {
       id: string;
       email: string;
       role: string;
       organizationId?: string;
     }
+<<<<<<< HEAD
     interface Request {
       user?: User & {
         firstName?: string;
@@ -34,6 +42,8 @@ declare global {
         };
       };
     }
+=======
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
   }
 }
 

@@ -1,5 +1,9 @@
 import { prisma } from "../config/db";
+<<<<<<< HEAD
 import { BadRequestError, ForbiddenError, NotFoundError, ConflictError } from "../utils/errors";
+=======
+import { BadRequestError, ConflictError, ForbiddenError, NotFoundError } from "../utils/errors";
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
 
 export async function getOrganization(organizationId: string) {
   const organization = await prisma.organization.findUnique({

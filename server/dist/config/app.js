@@ -13,7 +13,10 @@ const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
 const env_1 = require("./env");
 const error_middleware_1 = require("../middlewares/error.middleware");
 const auth_routes_1 = require("../routes/auth.routes");
+<<<<<<< HEAD
 const categories_routes_1 = require("../routes/categories.routes");
+=======
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
 const organization_routes_1 = require("../routes/organization.routes");
 const assets_routes_1 = require("../routes/assets.routes");
 const employees_routes_1 = require("../routes/employees.routes");
@@ -50,7 +53,10 @@ function createApp() {
         res.json({ status: "ok", timestamp: new Date().toISOString() });
     });
     app.use("/api/auth", auth_routes_1.authRouter);
+<<<<<<< HEAD
     app.use("/api/categories", categories_routes_1.categoriesRouter);
+=======
+>>>>>>> 848cfaa12294c55480bb0e94e3c323af31033fec
     app.use("/api/organization", organization_routes_1.organizationRouter);
     app.use("/api/assets", assets_routes_1.assetsRouter);
     app.use("/api/employees", employees_routes_1.employeesRouter);
