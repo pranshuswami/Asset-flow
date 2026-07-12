@@ -5,6 +5,7 @@ import { Bell, CircleAlert, CheckCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Kbd } from "@/components/ui/empty-state";
 import { useNotifications } from "@/context/notifications-context";
+import { useAuth } from "@/context/auth-context";
 import { cn } from "@/lib/cn";
 import { relativeTime } from "@/lib/format";
 import { NOTIFICATION_META } from "@/constants";
@@ -16,7 +17,6 @@ import {
 
 export function NotificationBell() {
   const { notifications, unread, markRead, markAllRead } = useNotifications();
-  const { user } = useAuth();
   const [open, setOpen] = useState(false);
 
   return (
@@ -105,6 +105,7 @@ export function NotificationBell() {
 
 export function UnreadPing() {
   const { unread } = useNotifications();
+  const { user } = useAuth();
   return (
     <AnimatePresence>
       {unread > 0 && user && (

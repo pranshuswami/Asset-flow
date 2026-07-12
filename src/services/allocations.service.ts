@@ -1,6 +1,6 @@
 import { db } from "@/data/db";
 import { ApiError, paginate, request, sortBy, type Query } from "@/services/http";
-import type { Allocation } from "@/types";
+import type { Allocation, Asset } from "@/types";
 import type { AllocationInput } from "@/schemas";
 
 function reconcileAsset(assetId: string, status: Asset["status"], ownerId?: string) {

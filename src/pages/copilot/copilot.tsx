@@ -156,7 +156,7 @@ function ChatBubble({ message, onCitation }: { message: Message; onCitation: (hr
             ))}
           </div>
         )}
-        <p className="px-1 text-[10px] text-muted-foreground">{relativeTime(message.at)}</p>
+        <p className="px-1 text-[10px] text-muted-foreground">{relativeTime(new Date(message.at))}</p>
       </div>
     </motion.div>
   );

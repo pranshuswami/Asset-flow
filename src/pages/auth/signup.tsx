@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { signupSchema, type SignupInput } from "@/schemas";
 import { useAuth } from "@/context/auth-context";
 
+
 export function SignupPage() {
   const { signup, loading } = useAuth();
   const navigate = useNavigate();

@@ -10,7 +10,7 @@ import { ProtectedRoute, PublicOnly } from "@/components/route-guard";
 import { AppShell } from "@/components/layout/app-shell";
 
 import { LoginPage } from "@/pages/auth/login";
-import { SignupPage } from "@/pages/auth/signup";
+import { SignupPage } from "@/pages/auth/Signup";
 import { ForgotPasswordPage } from "@/pages/auth/forgot-password";
 import { DashboardPage } from "@/pages/dashboard/dashboard";
 import { AssetsPage } from "@/pages/assets/assets";

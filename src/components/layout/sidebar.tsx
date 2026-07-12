@@ -4,6 +4,7 @@ import { NAV_GROUPS } from "@/components/layout/nav-config";
 import { cn } from "@/lib/cn";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import { Sparkles } from "lucide-react";
 
 export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const collapsed = useMediaQuery("(max-width: 1100px)");
