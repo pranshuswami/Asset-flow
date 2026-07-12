@@ -1,14 +1,17 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { NAV_GROUPS } from "@/components/layout/nav-config";
+import { NAV_GROUPS, navGroupsForRole } from "@/components/layout/nav-config";
 import { cn } from "@/lib/cn";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { Sparkles } from "lucide-react";
+import { useAuth } from "@/context/auth-context";
 
 export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const collapsed = useMediaQuery("(max-width: 1100px)");
   const location = useLocation();
+  const { user } = useAuth();
+  const groups = user ? navGroupsForRole(user.role) : NAV_GROUPS;
 
   return (
     <aside
@@ -20,7 +23,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
       <Brand collapsed={collapsed} />
 
       <nav className="scrollbar-thin flex-1 space-y-6 overflow-y-auto px-3 py-4">
-        {NAV_GROUPS.map((group) => (
+        {groups.map((group) => (
           <div key={group.id}>
             {!collapsed && (
               <p className="px-3 pb-2 text-[10px] font-semibold uppercase tracking-widest text-sidebar-muted">
