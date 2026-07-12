@@ -12,7 +12,7 @@ const assets: DashboardAsset[] = [
 
 export function DashboardPage() {
   return (
-    <div className="min-h-screen bg-[#050505] pb-24 text-white">
+    <div className="min-h-screen bg-background pb-24 text-foreground transition-colors">
       <Navbar />
       <main className="mx-auto max-w-[1900px] px-3 py-5 sm:px-6 md:py-7">
         <div className="grid gap-5 xl:grid-cols-[minmax(420px,0.65fr)_minmax(600px,1.35fr)]">
