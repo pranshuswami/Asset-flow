@@ -30,7 +30,7 @@ export function AICopilot() {
     {
       id: "welcome",
       role: "assistant",
-      text: "Hi, I'm your AssetFlow Copilot. Ask me about assets, allocations, bookings, or reports — or try a suggestion below.",
+      text: "Hi, I'm your AssetFlow AI. Ask me about assets, allocations, bookings, or reports — or try a suggestion below.",
       at: Date.now(),
     },
   ]);
