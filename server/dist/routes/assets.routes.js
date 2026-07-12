@@ -1,0 +1,22 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.assetsRouter = void 0;
+const express_1 = require("express");
+const assets_controller_1 = require("../controllers/assets.controller");
+const auth_middleware_1 = require("../middlewares/auth.middleware");
+const validation_middleware_1 = require("../middlewares/validation.middleware");
+const error_middleware_1 = require("../middlewares/error.middleware");
+const schemas_1 = require("../schemas");
+exports.assetsRouter = (0, express_1.Router)();
+exports.assetsRouter.use(auth_middleware_1.authMiddleware);
+exports.assetsRouter.use(auth_middleware_1.requireOrg);
+exports.assetsRouter.get("/", (0, error_middleware_1.asyncHandler)(assets_controller_1.assetsController.list));
+exports.assetsRouter.post("/", (0, auth_middleware_1.requireRole)("ADMIN", "ASSET_MANAGER", "DEPARTMENT_HEAD"), (0, validation_middleware_1.validateBody)(schemas_1.createAssetSchema), (0, error_middleware_1.asyncHandler)(assets_controller_1.assetsController.create));
+exports.assetsRouter.get("/:id", (0, error_middleware_1.asyncHandler)(assets_controller_1.assetsController.getById));
+exports.assetsRouter.patch("/:id", (0, auth_middleware_1.requireRole)("ADMIN", "ASSET_MANAGER", "DEPARTMENT_HEAD"), (0, validation_middleware_1.validateBody)(schemas_1.updateAssetSchema), (0, error_middleware_1.asyncHandler)(assets_controller_1.assetsController.update));
+exports.assetsRouter.delete("/:id", (0, auth_middleware_1.requireRole)("ADMIN", "ASSET_MANAGER"), (0, error_middleware_1.asyncHandler)(assets_controller_1.assetsController.remove));
+exports.assetsRouter.post("/:id/qr", (0, error_middleware_1.asyncHandler)(assets_controller_1.assetsController.generateQR));
+exports.assetsRouter.get("/:id/timeline", (0, error_middleware_1.asyncHandler)(assets_controller_1.assetsController.timeline));
+exports.assetsRouter.post("/:id/timeline", (0, auth_middleware_1.requireRole)("ADMIN", "ASSET_MANAGER", "DEPARTMENT_HEAD"), (0, validation_middleware_1.validateBody)(schemas_1.addTimelineEventSchema), (0, error_middleware_1.asyncHandler)(assets_controller_1.assetsController.addTimelineEvent));
+exports.assetsRouter.post("/:id/photo", (0, auth_middleware_1.requireRole)("ADMIN", "ASSET_MANAGER", "DEPARTMENT_HEAD"), assets_controller_1.uploadAssetPhoto, (0, error_middleware_1.asyncHandler)(assets_controller_1.assetsController.uploadPhoto));
+//# sourceMappingURL=assets.routes.js.map

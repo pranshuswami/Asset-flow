@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { type ColumnDef } from "@tanstack/react-table";
 import { Boxes, Plus, Filter } from "lucide-react";
 import { PageHeader } from "@/components/common/page-header";
@@ -23,7 +22,6 @@ const STATUS_OPTIONS = Object.entries(ASSET_STATUS_META);
 const CATEGORY_OPTIONS = Object.entries(ASSET_CATEGORY_META);
 
 export function AssetsPage() {
-  const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState<string>("all");
   const [category, setCategory] = useState<string>("all");

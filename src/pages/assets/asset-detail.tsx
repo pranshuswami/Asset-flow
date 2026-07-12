@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
-import { motion } from "framer-motion";
 import {
   Printer,
   Download,
@@ -21,16 +20,14 @@ import {
 } from "@/components/ui/sheet";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { UserAvatar } from "@/components/ui/avatar";
 import { StatusBadge, ConditionBadge } from "@/components/common/badges";
 import { AssetTimeline } from "@/components/common/asset-timeline";
 import { HealthRadial } from "@/components/charts/charts";
 import { lookup } from "@/hooks/use-lookups";
 import type { Asset } from "@/types";
 import { cn } from "@/lib/cn";
-import { formatCurrency, formatDate, relativeTime } from "@/lib/format";
+import { formatCurrency, formatDate } from "@/lib/format";
 
 export function AssetDetailDrawer({ asset, onClose }: { asset: Asset | null; onClose: () => void }) {
   const [tab, setTab] = useState("overview");
