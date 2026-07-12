@@ -30,9 +30,8 @@ import {
   useDashboardMetrics,
   useInsights,
 } from "@/hooks/queries";
-import { lookup } from "@/hooks/use-lookups";
 import { cn } from "@/lib/cn";
-import { formatPercent, relativeTime } from "@/lib/format";
+import { relativeTime } from "@/lib/format";
 import { TimelineDot } from "@/components/common/asset-timeline";
 import { ACTIVITY_META, ASSET_CATEGORY_META } from "@/constants";
 import type { Insight } from "@/types";
@@ -58,6 +57,12 @@ export function DashboardPage() {
       { name: "Maintenance", value: metrics.maintenance, color: C.warning },
     ];
   }, [metrics]);
+
+  const statusDotClassName = {
+    Available: "bg-success",
+    Allocated: "bg-primary",
+    Maintenance: "bg-warning",
+  } as const;
 
   const categoryData = useMemo(
     () =>
@@ -85,6 +90,22 @@ export function DashboardPage() {
         }
       />
 
+      <div className="rounded-3xl border border-border/70 bg-gradient-to-br from-primary/10 via-background to-accent/30 p-5 shadow-sm">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-2xl">
+            <p className="text-sm font-medium text-primary">Enterprise control center</p>
+            <h2 className="mt-1 text-2xl font-semibold tracking-tight">Your asset operations are running with strong utilization and healthy maintenance coverage.</h2>
+            <p className="mt-2 text-sm text-muted-foreground">Track fleet health, workforce allocation and AI-generated recommendations from a single elegant workspace.</p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <Button variant="secondary" size="sm">Live ops</Button>
+            <Button variant="outline" size="sm" asChild>
+              <Link to="/copilot">Open AI copilot</Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-6">
         <StatCard label="Total Assets" value={metrics?.totalAssets ?? 0} icon={Boxes} accent="primary" loading={isLoading} delta={2.4} hint="vs last month" />
         <StatCard label="Available" value={metrics?.available ?? 0} icon={CircleCheck} accent="success" loading={isLoading} />
@@ -110,7 +131,7 @@ export function DashboardPage() {
               <div className="mt-2 flex justify-center gap-4 text-xs">
                 {statusDonut.map((s) => (
                   <span key={s.name} className="flex items-center gap-1.5">
-                    <span className="size-2 rounded-full" style={{ background: s.color }} />
+                    <span className={cn("size-2 rounded-full", statusDotClassName[s.name as keyof typeof statusDotClassName])} />
                     {s.name}
                   </span>
                 ))}

@@ -110,7 +110,7 @@
   }
 
   .text-balance {
-    text-wrap: balance;
+    text-wrap: wrap;
   }
 
   .gradient-primary {
@@ -131,8 +131,13 @@
   }
 
   .scrollbar-thin {
-    scrollbar-width: thin;
     scrollbar-color: hsl(var(--border)) transparent;
+  }
+
+  @supports (scrollbar-width: thin) {
+    .scrollbar-thin {
+      scrollbar-width: thin;
+    }
   }
 
   .scrollbar-thin::-webkit-scrollbar {

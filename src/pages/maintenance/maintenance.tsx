@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { type ColumnDef } from "@tanstack/react-table";
 import { toast } from "sonner";
-import { Wrench, Plus, CheckCircle2, AlertTriangle } from "lucide-react";
+import { Wrench, Plus, CheckCircle2 } from "lucide-react";
 import { PageHeader } from "@/components/common/page-header";
 import { DataTable } from "@/components/common/data-table";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { EmptyState } from "@/components/ui/empty-state";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { MaintenanceBadge, PriorityBadge } from "@/components/common/badges";
-import { useMaintenance, useAssets, useCreateMaintenance } from "@/hooks/queries";
+import { useMaintenance, useAssets, useCreateMaintenance, useResolveMaintenance } from "@/hooks/queries";
 import { lookup } from "@/hooks/use-lookups";
 import { MAINTENANCE_PRIORITY_META, MAINTENANCE_STATUS_META } from "@/constants";
 import { maintenanceSchema, type MaintenanceInput } from "@/schemas";

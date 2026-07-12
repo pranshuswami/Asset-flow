@@ -13,6 +13,7 @@ import { useEmployees } from "@/hooks/queries";
 import { lookup } from "@/hooks/use-lookups";
 import { ROLES } from "@/constants";
 import { useCommand } from "@/context/command-context";
+import { useLookups } from "@/hooks/use-lookups";
 import { relativeTime } from "@/lib/format";
 import type { User } from "@/types";
 

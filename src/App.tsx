@@ -8,6 +8,7 @@ import { CommandProvider } from "@/context/command-context";
 import { ErrorBoundary } from "@/components/error-boundary";
 import { ProtectedRoute, PublicOnly } from "@/components/route-guard";
 import { AppShell } from "@/components/layout/app-shell";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 import { LoginPage } from "@/pages/auth/login";
 import { SignupPage } from "@/pages/auth/signup";
@@ -35,7 +36,8 @@ export default function App() {
           <AuthProvider>
             <NotificationsProvider>
               <CommandProvider>
-                <BrowserRouter>
+                <TooltipProvider delayDuration={200}>
+                  <BrowserRouter>
                   <Routes>
                     {/* Public auth routes */}
                     <Route
@@ -89,7 +91,8 @@ export default function App() {
 
                     <Route path="*" element={<div className="p-10 text-center text-sm text-muted-foreground">Page not found.</div>} />
                   </Routes>
-                </BrowserRouter>
+                  </BrowserRouter>
+                </TooltipProvider>
               </CommandProvider>
             </NotificationsProvider>
           </AuthProvider>

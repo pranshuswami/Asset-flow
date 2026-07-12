@@ -2,14 +2,12 @@ import { useMemo } from "react";
 import { Download, FileText, FileSpreadsheet, Printer, TrendingDown, Activity } from "lucide-react";
 import { PageHeader } from "@/components/common/page-header";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
 import { ChartCard, CategoryBars, DepartmentBars, UtilizationArea, StatusDonut } from "@/components/charts/charts";
 import { useDashboardMetrics } from "@/hooks/queries";
-import { lookup } from "@/hooks/use-lookups";
 import { exportToCsv, exportToJson, getAssetsExport } from "@/lib/export";
-import { formatCurrency } from "@/lib/format";
 import { ASSET_CATEGORY_META } from "@/constants";
 
 const C = {
@@ -19,7 +17,7 @@ const C = {
 };
 
 export function ReportsPage() {
-  const { data: metrics, isLoading } = useDashboardMetrics();
+  const { data: metrics } = useDashboardMetrics();
 
   const categoryData = useMemo(
     () => metrics?.categoryBreakdown.map((c) => ({ category: ASSET_CATEGORY_META[c.category].label, count: c.count })) ?? [],
