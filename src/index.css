@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 224 16% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 16% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 16% 12%;
+
+    --primary: 248 84% 62%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 224 16% 22%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 248 84% 96%;
+    --accent-foreground: 248 60% 42%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 152 56% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 30 60% 18%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 248 84% 62%;
+
+    --sidebar: 0 0% 99%;
+    --sidebar-foreground: 224 16% 18%;
+    --sidebar-muted: 220 9% 46%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 240 10% 5%;
+    --foreground: 220 18% 92%;
+
+    --card: 240 9% 7%;
+    --card-foreground: 220 18% 92%;
+
+    --popover: 240 9% 8%;
+    --popover-foreground: 220 18% 92%;
+
+    --primary: 248 90% 68%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 6% 13%;
+    --secondary-foreground: 220 18% 92%;
+
+    --muted: 240 6% 13%;
+    --muted-foreground: 220 9% 60%;
+
+    --accent: 248 40% 18%;
+    --accent-foreground: 248 90% 82%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 152 52% 46%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 55%;
+    --warning-foreground: 30 60% 12%;
+
+    --border: 240 6% 15%;
+    --input: 240 6% 16%;
+    --ring: 248 90% 68%;
+
+    --sidebar: 240 10% 4%;
+    --sidebar-foreground: 220 18% 90%;
+    --sidebar-muted: 220 9% 52%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    @apply bg-primary/25;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-card/70 backdrop-blur-xl backdrop-saturate-150;
+  }
+
+  .glass-strong {
+    @apply bg-card/90 backdrop-blur-2xl backdrop-saturate-150;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gradient-primary {
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--primary)) 0%,
+      hsl(270 84% 62%) 100%
+    );
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--primary)) 0%,
+      hsl(280 84% 68%) 100%
+    );
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-border;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/40;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  .grid-bg {
+    background-image: radial-gradient(
+      hsl(var(--border)) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+  }
+
+  .noise {
+    position: relative;
+  }
+}
+
+/* Smooth focus ring that respects reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
